@@ -1,0 +1,11 @@
+     Principal    | Permission |    Operation     | Resource Type |    Resource Name     | Pattern Type  
+------------------+------------+------------------+---------------+----------------------+---------------
+  User:sa-8mk6gxq | ALLOW      | CREATE           | TOPIC         | __debezium-heartbeat | PREFIXED      
+  User:sa-8mk6gxq | ALLOW      | CREATE           | TOPIC         | desafio              | PREFIXED      
+  User:sa-8mk6gxq | ALLOW      | DESCRIBE         | CLUSTER       | kafka-cluster        | LITERAL       
+  User:sa-8mk6gxq | ALLOW      | DESCRIBE         | TOPIC         | __debezium-heartbeat | PREFIXED      
+  User:sa-8mk6gxq | ALLOW      | DESCRIBE         | TOPIC         | desafio              | PREFIXED      
+  User:sa-8mk6gxq | ALLOW      | DESCRIBE_CONFIGS | TOPIC         | __debezium-heartbeat | PREFIXED      
+  User:sa-8mk6gxq | ALLOW      | DESCRIBE_CONFIGS | TOPIC         | desafio              | PREFIXED      
+  User:sa-8mk6gxq | ALLOW      | WRITE            | TOPIC         | __debezium-heartbeat | PREFIXED      
+  User:sa-8mk6gxq | ALLOW      | WRITE            | TOPIC         | desafio              | PREFIXED      

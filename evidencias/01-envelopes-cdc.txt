@@ -1,0 +1,137 @@
+// op=c
+{{
+  "before": null,
+  "after": {
+    "desafio.public.merchants.Value": {
+      "id": "mer-900",
+      "name": "Teste CDC",
+      "category": "FOOD",
+      "country": "BR"
+    }
+  },
+  "source": {
+    "version": "3.2.5.Final",
+    "connector": "postgresql",
+    "name": "desafio",
+    "ts_ms": 1793740058159,
+    "snapshot": {
+      "string": "false"
+    },
+    "db": "neondb",
+    "sequence": {
+      "string": "[null,\"30756904\"]"
+    },
+    "schema": "public",
+    "table": "merchants",
+    "txId": {
+      "long": 3365
+    },
+    "lsn": {
+      "long": 30756904
+    },
+    "xmin": null
+  },
+  "op": "c",
+  "ts_ms": {
+    "long": 1793740058677
+  },
+  "transaction": null
+}}
+
+
+// op=u
+{{
+  "before": {
+    "desafio.public.merchants.Value": {
+      "id": "mer-900",
+      "name": "Teste CDC",
+      "category": "FOOD",
+      "country": "BR"
+    }
+  },
+  "after": {
+    "desafio.public.merchants.Value": {
+      "id": "mer-900",
+      "name": "Teste CDC",
+      "category": "RETAIL",
+      "country": "BR"
+    }
+  },
+  "source": {
+    "version": "3.2.5.Final",
+    "connector": "postgresql",
+    "name": "desafio",
+    "ts_ms": 1793740109849,
+    "snapshot": {
+      "string": "false"
+    },
+    "db": "neondb",
+    "sequence": {
+      "string": "[\"30757104\",\"30757904\"]"
+    },
+    "schema": "public",
+    "table": "merchants",
+    "txId": {
+      "long": 3367
+    },
+    "lsn": {
+      "long": 30757904
+    },
+    "xmin": null
+  },
+  "op": "u",
+  "ts_ms": {
+    "long": 1793740110133
+  },
+  "transaction": null
+}}
+
+
+// op=d
+{{
+  "before": {
+    "desafio.public.merchants.Value": {
+      "id": "mer-900",
+      "name": "Teste CDC",
+      "category": "RETAIL",
+      "country": "BR"
+    }
+  },
+  "after": null,
+  "source": {
+    "version": "3.2.5.Final",
+    "connector": "postgresql",
+    "name": "desafio",
+    "ts_ms": 1793740552928,
+    "snapshot": {
+      "string": "false"
+    },
+    "db": "neondb",
+    "sequence": {
+      "string": "[\"30758096\",\"30769112\"]"
+    },
+    "schema": "public",
+    "table": "merchants",
+    "txId": {
+      "long": 3379
+    },
+    "lsn": {
+      "long": 30769112
+    },
+    "xmin": null
+  },
+  "op": "d",
+  "ts_ms": {
+    "long": 1793740553091
+  },
+  "transaction": null
+}}
+
+
+// tombstone (valor null)
+null
+
+//KEY
+{
+  "id": "mer-900"
+}

@@ -1,0 +1,14 @@
+                     Subject                      
+--------------------------------------------------
+  __debezium-heartbeat-lcc-o36w3w9.desafio-value  
+  desafio.accounts.pk-key                         
+  desafio.accounts.pk-value                       
+  desafio.contrato.accounts-value                 
+  desafio.fraud.detected-value                    
+  desafio.public.accounts-value                   
+  desafio.public.cards-value                      
+  desafio.public.customers-value                  
+  desafio.public.merchants-value                  
+  desafio.public.transactions-value               
+  desafio.transactions.append-value               
+  desafio.transactions.enriched-value             

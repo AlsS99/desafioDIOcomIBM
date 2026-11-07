@@ -1,0 +1,3 @@
+  Current |     ID     |     Name      | Stream Governance Package  
+----------+------------+---------------+----------------------------
+  *       | env-3kx65w | desafio-final | ESSENTIALS                 

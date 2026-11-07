@@ -1,0 +1,2 @@
+Starting Kafka Producer. Use Ctrl-C to exit.
+failed to produce offset -1: Broker: Topic authorization failed

@@ -1,0 +1,3 @@
+      ID      |    Name     | Status  |  Type  | Trace  
+--------------+-------------+---------+--------+--------
+  lcc-o36w3w9 | desafio-cdc | RUNNING | source |        

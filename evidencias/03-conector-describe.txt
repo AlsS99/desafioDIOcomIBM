@@ -1,0 +1,42 @@
+Connector Details
++--------+-------------+
+| ID     | lcc-o36w3w9 |
+| Name   | desafio-cdc |
+| Status | RUNNING     |
+| Type   | source      |
++--------+-------------+
+
+
+Task Level Details
+  Task |  State   
+-------+----------
+     0 | RUNNING  
+
+
+Configuration Details
+            Config            |                                       Value                                         
+------------------------------+-------------------------------------------------------------------------------------
+  after.state.only            | false                                                                               
+  cloud.environment           | prod                                                                                
+  cloud.provider              | aws                                                                                 
+  connector.class             | PostgresCdcSourceV2                                                                 
+  database.dbname             | neondb                                                                              
+  database.hostname           | ep-steep-math-bchd0l3u.c-16.us-east-1.aws.neon.tech                                 
+  database.password           | ****************                                                                    
+  database.port               | 5432                                                                                
+  database.sslmode            | require                                                                             
+  database.user               | cdc_user                                                                            
+  decimal.handling.mode       | precise                                                                             
+  heartbeat.interval.ms       | 60000                                                                               
+  kafka.auth.mode             | SERVICE_ACCOUNT                                                                     
+  kafka.endpoint              | SASL_SSL://pkc-oxqxx9.us-east-1.aws.confluent.cloud:9092                            
+  kafka.region                | us-east-1                                                                           
+  kafka.service.account.id    | sa-8mk6gxq                                                                          
+  name                        | desafio-cdc                                                                         
+  output.data.format          | AVRO                                                                                
+  publication.autocreate.mode | disabled                                                                            
+  publication.name            | desafio_pub                                                                         
+  slot.name                   | desafio_slot                                                                        
+  table.include.list          | public.customers,public.accounts,public.cards,public.merchants,public.transactions  
+  tasks.max                   | 1                                                                                   
+  topic.prefix                | desafio                                                                             

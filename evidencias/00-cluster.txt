@@ -1,1 +1,3 @@
-
+  Current |     ID      |     Name      | Type  | Cloud |  Region   | Availability | Network | Status | Deletion Protection |                         Endpoint                          
+----------+-------------+---------------+-------+-------+-----------+--------------+---------+--------+---------------------+-----------------------------------------------------------
+          | lkc-0xy6kq9 | desafio-basic | BASIC | aws   | us-east-1 | low          |         | UP     | false               | SASL_SSL://pkc-oxqxx9.us-east-1.aws.confluent.cloud:9092  

@@ -1,0 +1,11 @@
+STOPPED | CREATE TABLE `desafio.accounts.pk` ( PRIMARY KEY (id) NOT ENFORCED ) D
+STOPPED | CREATE TABLE `desafio.transactions.enriched` AS SELECT t.id AS transac
+FAILED | CREATE TABLE `desafio.fraud.detected` AS SELECT * FROM `desafio.transa
+FAILED | CREATE TABLE `desafio.fraud.detected` AS SELECT * FROM `desafio.transa
+COMPLETED | SHOW CREATE TABLE `desafio.transactions.enriched`;
+FAILED | CREATE TABLE `desafio.transactions.append` WITH ('changelog.mode' = 'a
+FAILED | CREATE TABLE `desafio.transactions.append` WITH ('changelog.mode' = 'a
+STOPPED | CREATE TABLE `desafio.transactions.append` AS SELECT id, account_id, c
+RUNNING | CREATE TABLE `desafio.transactions.append` AS SELECT id, account_id, c
+RUNNING | CREATE TABLE `desafio.transactions.enriched` WITH ('changelog.mode' = 
+RUNNING | CREATE TABLE `desafio.fraud.detected` AS SELECT * FROM `desafio.transa

@@ -1,0 +1,5 @@
+     Principal    | Permission | Operation | Resource Type | Resource Name | Pattern Type  
+------------------+------------+-----------+---------------+---------------+---------------
+  User:sa-7pzm5vw | ALLOW      | DESCRIBE  | TOPIC         | desafio       | PREFIXED      
+  User:sa-7pzm5vw | ALLOW      | READ      | GROUP         | desafio       | PREFIXED      
+  User:sa-7pzm5vw | ALLOW      | READ      | TOPIC         | desafio       | PREFIXED      

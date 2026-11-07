@@ -1,0 +1,40 @@
+{
+  "before": null,
+  "after": {
+    "desafio.public.transactions.Value": {
+      "id": "trx-01991",
+      "account_id": "acc-0223",
+      "card_id": "crd-0223",
+      "merchant_id": "mer-048",
+      "amount": "465.23",
+      "created_at": "2026-10-28T04:22:17.357160Z"
+    }
+  },
+  "source": {
+    "version": "3.2.5.Final",
+    "connector": "postgresql",
+    "name": "desafio",
+    "ts_ms": 1793727097048,
+    "snapshot": {
+      "string": "true"
+    },
+    "db": "neondb",
+    "sequence": {
+      "string": "[null,\"30430288\"]"
+    },
+    "schema": "public",
+    "table": "transactions",
+    "txId": {
+      "long": 3073
+    },
+    "lsn": {
+      "long": 30430288
+    },
+    "xmin": null
+  },
+  "op": "r",
+  "ts_ms": {
+    "long": 1793727097475
+  },
+  "transaction": null
+}
