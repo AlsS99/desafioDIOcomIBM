@@ -1,1 +1,11 @@
-
+{
+  "type": "record",
+  "name": "Account",
+  "namespace": "com.bootcamp.payments.accounts",
+  "fields": [
+    {"name": "id", "type": "string"},
+    {"name": "customer_id", "type": "string"},
+    {"name": "status", "type": "string"},
+    {"name": "balance", "type": {"type": "bytes", "logicalType": "decimal", "precision": 15, "scale": 2}}
+  ]
+}
