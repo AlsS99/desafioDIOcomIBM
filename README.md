@@ -165,7 +165,7 @@ Pré-requisitos: Confluent CLI logada, conta no Neon com replicação lógica at
 ## Como derrubar tudo
 
 1. Pare os statements do Flink e apague o conector.
-2. **Antes de apagar o ambiente**, salve as listas vazias (`None found.`) em `evidencias/08-teardown-depois.txt`.
+2. **Antes de apagar os recursos**, o ambiente default não pode ser apagado quando é o único da organização, salve as listas vazias (`None found.`) em `evidencias/08-teardown-depois.txt`.
 3. Apague compute pool, API keys, cluster, ambiente e service accounts (`./teardown.sh`).
 4. No Neon: `SELECT pg_drop_replication_slot('desafio_slot');` ou apague o projeto.
 
