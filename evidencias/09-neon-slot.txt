@@ -1,3 +1,5 @@
 	slot_name
 1	wal_proposer_slot
 2	wal_retention_slot
+
+O slot desafio_slot não consta em pg_replication_slots; os dois slots listados (wal_proposer_slot, wal_retention_slot) são internos do Neon.
