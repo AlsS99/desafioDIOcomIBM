@@ -25,7 +25,7 @@ Environment `desafio-final`, cluster Basic `desafio-basic` (aws/us-east-1). Iden
 - `desafio-producer` (`sa-8mk6gxq`): WRITE/CREATE/DESCRIBE/DESCRIBE_CONFIGS em tópicos com prefixo `desafio` e `__debezium-heartbeat`, DESCRIBE no cluster.
 - `desafio-consumer` (`sa-7pzm5vw`): READ/DESCRIBE em tópicos `desafio`, READ em grupos `desafio`.
 
-Escolhi o prefixo `desafio` (sem hífen) porque os tópicos do conector são `desafio.public.pagameeentos`; com `desafio-` ficariam sem permissão.
+Escolhi o prefixo `desafio` (sem hífen) porque os tópicos do conector são `desafio.public.*`; com `desafio-` ficariam sem permissão.
 
 Evidências: `evidencias/00-cluster.txt`, `00-environment.txt`, `01-service-accounts.txt`, `01-acl-producer.txt`, `01-acl-consumer.txt`.
 
@@ -49,7 +49,7 @@ Subjects registrados (`evidencias/02-subjects.txt`):
 
 Só `desafio.accounts.pk` tem subject de chave: é a única tabela criada com PK declarada. O conector não registra schema de chave.
 
-**Tags PII/PCI: não aplicadas.** Os campos sensíveis do seed (`cpf` e `email` em `customers`, `card_number` em `cards`) trafegam em texto claro nos tópicos `desafio.public.pagamento`, sem tag e sem mascaramento. Em produção, o caminho seria criar as definições de tag no Stream Governance, marcar esses campos e mascarar o número do cartão antes de publicar.
+**Tags PII/PCI: não aplicadas.** Os campos sensíveis do seed (`cpf` e `email` em `customers`, `card_number` em `cards`) trafegam em texto claro nos tópicos `desafio.public.*`, sem tag e sem mascaramento. Em produção, o caminho seria criar as definições de tag no Stream Governance, marcar esses campos e mascarar o número do cartão antes de publicar.
 
 
 ## Camada 3: Ingestão (CDC)
