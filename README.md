@@ -72,7 +72,7 @@ Statements em `sql/`:
 
 - `01-enriquecimento.sql`: `accounts.pk` (PK declarada) e `transactions.append`
 - `02-enriquecimento-join.sql`: temporal join transações ⋈ contas (`sql.tables.scan.idle-timeout=5s`)
-- `03-alerta-fraude-.sql`: `MATCH_RECOGNIZE`, `PARTITION BY card_id`, `PATTERN (T{3,}?) WITHIN INTERVAL '60' SECOND`
+- `03-alerta-fraude.sql`: `MATCH_RECOGNIZE`, `PARTITION BY card_id`, `PATTERN (T{3,}?) WITHIN INTERVAL '60' SECOND`
 
 Dois ajustes que o pipeline exigiu:
 
@@ -115,9 +115,6 @@ Prova de menor privilégio: com a chave do consumer, escrever no tópico falha c
 ### ③ Custos
 
 `confluent billing cost list` (`evidencias/07-billing.txt`):
-③ Custos
-
-confluent billing cost list (evidencias/07-billing.txt):
 
 | Dia | Conector | Flink | Kafka | Bruto | Cobrado |
 |---|---|---|---|---|---|
@@ -127,7 +124,7 @@ confluent billing cost list (evidencias/07-billing.txt):
 |06/11	| US$ 10,50 |	US$ 17,626 |US$ 5,8468 |	US$ 33,9728|US$ 0,00 (crédito promo)
 |Total	| US$ 38,00 |	US$ 39,7495|US$ 9,5388 |	US$ 87,2883	|US$ 0,00
 
-**Custo declarado: `US$ 87,29 bruto (03/11 a 06/11`**  US$ 0,00 cobrado, porque todo o valor saiu do crédito de teste (a linha PROMO_CREDIT de cada dia cobre exatamente o bruto). O valor pode ainda crescer: o billing demora a consolidar e o teardown foi feito depois de 06/11. Distribuição: conector ~43,5%, Flink ~45,5%, Kafka ~10,9% (a linha KAFKA_NUM_CKUS só aparece a partir de 04/11). O custo diário subiu de US$ 3,90 para US$ 33,97 porque o pipeline ficou ligado entre dias, com vários statements contínuos.
+**Custo declarado: `US$ 87,29 bruto (03/11 a 06/11`  US$ 0,00 cobrado**, porque todo o valor saiu do crédito de teste. O valor pode ainda crescer: o billing demora a consolidar e o teardown foi feito depois de 06/11. Distribuição: conector ~43,5%, Flink ~45,5%, Kafka ~10,9% (a linha KAFKA_NUM_CKUS só aparece a partir de 04/11). O custo diário subiu de US$ 3,90 para US$ 33,97 porque o pipeline ficou ligado entre dias, com vários statements contínuos.
 
 Duas alavancas: (1) teardown logo após coletar evidências, porque o custo é por hora (conector US$ 0,50 por task-hour, Flink US$ 0,21 por CFU-hour) e o pipeline ficou ligado entre dias; (2) parar statements contínuos que não precisam ficar ativos e limitar o `--max-cfu` do compute pool.
 
@@ -149,7 +146,7 @@ A idempotência é código meu: o efeito de um alerta (ex.: bloquear o cartão) 
 - **CDC e não batch:** captura insert/update/delete com latência baixa e sem consultas pesadas no banco; o `before` do UPDATE/DELETE exige REPLICA IDENTITY FULL.
 - **Avro + Schema Registry:** contrato versionado, com compatibilidade verificada antes de publicar.
 - **Flink SQL:** temporal join para enriquecer e `MATCH_RECOGNIZE` para a regra de padrão em janela.
-- **Janela de 60 s e 3 transações:** regra de velocity simples; ajustável em `sql/03-fraude-velocity.sql`.
+- **Janela de 60 s e 3 transações:** regra de velocity simples; ajustável em `sql/03-alerta-fraude.sql`.
 - **Cluster Basic:** suficiente para o volume e o mais barato.
 
 ## Como subir do zero
@@ -165,11 +162,11 @@ Pré-requisitos: Confluent CLI logada, conta no Neon com replicação lógica at
 ## Como derrubar tudo
 
 1. Pare os statements do Flink e apague o conector.
-2. **Antes de apagar os recursos**, o ambiente default não pode ser apagado quando é o único da organização, salve as listas vazias (`None found.`) em `evidencias/08-teardown-depois.txt`.
-3. Apague compute pool, API keys, cluster, ambiente e service accounts (`./teardown.sh`).
+2. Antes de apagar o cluster, salve as listas vazias (`None found.`) em `evidencias/08-teardown-depois.txt`.
+3. Apague compute pool, API keys, cluster e service accounts. O ambiente `desafio-final` não pode ser apagado, porque é o único da organização; ele fica vazio (`evidencias/08-teardown-final.txt`).
 4. No Neon: `SELECT pg_drop_replication_slot('desafio_slot');` ou apague o projeto.
 
-Verificação: `Verificação (`evidencias/08-teardown-depois.txt`):
+ `Verificação: (evidencias/08-teardown-depois.txt):`
 
 ```
 == connect cluster list
